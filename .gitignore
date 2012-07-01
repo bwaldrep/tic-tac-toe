@@ -1,0 +1,5 @@
+# ignore temporary files
+*~
+
+# ignore pyc files
+*.pyc
