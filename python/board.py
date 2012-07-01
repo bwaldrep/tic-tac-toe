@@ -21,7 +21,7 @@ class Board:
         if self.board[x][y] == 'e':
             self.board[x][y] = marker
         else:
-            raise "ERROR INVALID MOVE" #incorrect syntax, lookup how to do this
+            raise Exception("ERROR INVALID MOVE")
 
     def winner(self):
         """Returns true if either player has
