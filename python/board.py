@@ -5,7 +5,7 @@ class Board:
     """A simple tic tac toe board"""
 
     def __init__(self):
-        self.board = [list('eee') for i in range(3)]
+        self.board = [list('   ') for i in range(3)]
 
     def __str__(self):
         """Draw the board nicely for
@@ -14,11 +14,17 @@ class Board:
         pboard = map(lambda(row) : '|'.join(row) + '\n', self.board)
         return middle.join(pboard)
 
+    def empty(self, x, y):
+        """Returns true if position (x,y) is empty"""
+        if self.board[x][y] == ' ':
+            return True
+        return False
+
     def move(self, x, y, marker):
         """Attempt to place marker on position
         (x,y). If the position is not empty
         raise an exception"""
-        if self.board[x][y] == 'e':
+        if self.empty(x,y):
             self.board[x][y] = marker
         else:
             raise Exception("ERROR INVALID MOVE")
@@ -30,7 +36,7 @@ class Board:
         cols = [map(lambda(row):row[i],rows) for i in range(3)]
         total = rows + cols
         for item in total:
-            if item[0] == item[1] == item[2] != 'e':
+            if item[0] == item[1] == item[2] != ' ':
                 return True
         return False
 
@@ -40,10 +46,7 @@ class Board:
         if self.winner():
             return True
 
-        for row in self.board:
-            for col in row:
-                if col == 'e':
-                    return False
+        for i, j in 
 
         return True
 
@@ -53,7 +56,7 @@ class Board:
         res = []
         for i in range(3):
             for j in range(3):
-                if self.board[i][j] == 'e':
+                if self.board[i][j] == ' ':
                     temp = Board()
                     # avoid a shallow copy
                     temp.board = [list(row) for row in self.board]
