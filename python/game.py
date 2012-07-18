@@ -1,14 +1,14 @@
 # Bill Waldrep
 # July 6, 2012
 
-import Board
+import board
 
 class Game(object):
     """The top level class for the
     tic-tac-toe game"""
     
     def __init__(self, player1, player2):
-        self.board = Board.Board()
+        self.board = board.Board()
         self.p1 = player1
         self.p2 = player2
         self.p1.setMarker('X')
@@ -19,6 +19,7 @@ class Game(object):
             print self.board
             self.doTurn()
         
+        print self.board
         if self.board.winner():
             print "We have a winner!"
         else:

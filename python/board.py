@@ -46,20 +46,36 @@ class Board:
         if self.winner():
             return True
 
-        for i, j in 
+        for x in range(3):
+            for y in range(3):
+                if self.empty(x,y):
+                    return False
 
         return True
 
-    def getMoves(self, marker):
+    def getMoves(self):
+        """Returns a list of coordinates of all
+        valid moves"""
+        res = []
+        for x in range(3):
+            for y in range(3):
+                if self.empty(x,y):
+                    res.append((x,y))
+        return res
+
+    def clone(self):
+        """Returns a deep copy of itself"""
+        ret = Board()
+        ret.board = [list(row) for row in self.board]
+        return ret
+
+    def getValidBoards(self, marker):
         """Returns a list of the boards resulting
         from making every possible valid move"""
         res = []
-        for i in range(3):
-            for j in range(3):
-                if self.board[i][j] == ' ':
-                    temp = Board()
-                    # avoid a shallow copy
-                    temp.board = [list(row) for row in self.board]
-                    temp.move(i,j,marker)
-                    res.append(temp)
+        valid = self.getMoves()
+        for x,y in res:
+            temp = self.clone()
+            temp.move(x,y,marker)
+            res.append(temp)
         return res
