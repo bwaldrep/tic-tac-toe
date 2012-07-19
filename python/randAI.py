@@ -5,7 +5,7 @@ import random
 import player
 import board
 
-class Rand(player.Player):
+class Player(player.Player):
     """A player that makes random moves"""
     
     def __init__(self):

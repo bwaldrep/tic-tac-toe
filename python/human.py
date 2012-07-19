@@ -5,7 +5,8 @@ import player
 import board
 
 class Player(player.Player):
-    """A player that makes random moves"""
+    """A player that accepts user input
+    to make moves"""
     
     def getMove(self, board):
       print "Please enter your move:"
