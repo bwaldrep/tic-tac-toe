@@ -3,8 +3,9 @@
 
 import game
 import randAI
+import human
 
 r1 = randAI.Rand()
-r2 = randAI.Rand()
+r2 = human.Player()
 g = game.Game(r1,r2)
 g.play()

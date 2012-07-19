@@ -38,6 +38,13 @@ class Board:
         for item in total:
             if item[0] == item[1] == item[2] != ' ':
                 return True
+
+        # check diagonals
+        if self.board[0][0] == self.board[1][1] == self.board[2][2] != ' ':
+        	return True
+        if self.board[2][0] == self.board[1][1] == self.board[0][2] != ' ':
+        	return True  
+
         return False
 
     def finished(self):
@@ -74,7 +81,7 @@ class Board:
         from making every possible valid move"""
         res = []
         valid = self.getMoves()
-        for x,y in res:
+        for x,y in valid:
             temp = self.clone()
             temp.move(x,y,marker)
             res.append(temp)
