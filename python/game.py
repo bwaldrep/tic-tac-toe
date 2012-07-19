@@ -20,8 +20,9 @@ class Game(object):
             self.doTurn()
         
         print self.board
-        if self.board.winner():
-            print "We have a winner!"
+        w = self.board.winner()
+        if w:
+            print w, "wins!"
         else:
             print "It's a tie"
 
