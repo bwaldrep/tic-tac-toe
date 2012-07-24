@@ -9,9 +9,9 @@ class Player(player.Player):
     basic minimax search"""
     
     def getMove(self, board):
-        return self.pickMax(board, self.marker)[0]
+        return self.pickMaxMin(board, self.marker)[0]
 
-    def pickMax(self, board, marker):
+    def pickMaxMin(self, board, marker):
         moves = board.getMoves()
         pairs = []
         for (x,y) in moves:
@@ -20,26 +20,15 @@ class Player(player.Player):
             if temp.finished():
                 score = self.evalBoard(temp)
             else:
-                pick = self.pickMin(temp, self.flip(marker))
+                pick = self.pickMaxMin(temp, self.flip(marker))
                 score = pick[1]
             pairs.append(((x,y),score))
         pairs.sort(key=lambda x:x[1])
-        return pairs[-1]
-
-    def pickMin(self, board, marker):
-        moves = board.getMoves()
-        pairs = []
-        for (x,y) in moves:
-            temp = board.clone()
-            temp.move(x,y, marker)
-            if temp.finished():
-                score = self.evalBoard(temp)
-            else:
-                pick = self.pickMax(temp, self.flip(marker))
-                score = pick[1]
-            pairs.append(((x,y),score))
-        pairs.sort(key=lambda x:x[1])
-        return pairs[0]
+        if marker == self.marker:
+        	  index = -1
+        else:
+          	index = 0
+        return pairs[index]
 
     def evalBoard(self, board):
         """Evaluate a finished board"""

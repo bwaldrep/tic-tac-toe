@@ -25,6 +25,7 @@ class Game(object):
             print w, "wins!"
         else:
             print "It's a tie"
+        return w
 
     def doTurn(self):
         x,y = self.p1.getMove(self.board)
