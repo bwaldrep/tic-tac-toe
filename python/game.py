@@ -20,10 +20,12 @@ class Game(object):
             self.doTurn()
         
         print self.board
-        if self.board.winner():
-            print "We have a winner!"
+        w = self.board.winner()
+        if w:
+            print w, "wins!"
         else:
             print "It's a tie"
+        return w
 
     def doTurn(self):
         x,y = self.p1.getMove(self.board)
